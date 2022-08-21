@@ -20,4 +20,4 @@ npm install
 After installation finishes follow configuration instructions then run `npm start` to start .
 
 ## 📝 Features
-[![Watch the video](https://www.youtube.com/watch?v=jbzpSNtwN-M)
+https://www.youtube.com/watch?v=jbzpSNtwN-M
