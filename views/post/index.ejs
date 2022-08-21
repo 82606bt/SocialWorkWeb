@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng bài</title>
+    <link rel="stylesheet" href="../css/post.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../js/home.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="top_navbar">
+            <div class="hamburger">
+                <div class="hamburger__inner">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="logo">
+                    TRANG MỤC
+                </div>
+                <div class="logo-title">
+                    TRƯỜNG ĐẠI HỌC CÔNG NGHỆ ĐỒNG NAI
+                </div>
+                <div class="right_menu">
+                    <ul>
+                        <li><i class="fa fa-user-circle-o"></i>
+                            <input id="_username" disabled>
+                            <div class="profile_dd">
+                                <button id="logout" class="dd_item">Thoát</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_container">
+            <div class="sidebar">
+                <div class="sidebar__inner">
+                    <ul>
+                        <li>
+                            <a href="/user" class="active">
+                                <span class="icon"><img src="../images/icons/ID-Card 1.png" alt=""></i></span>
+                                <span class="title">Thông tin cá nhân</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/post" class="active-2">
+                                <span class="icon"><img src="../images/icons/Post.png" alt=""></i></span>
+                                <span class="title">Đăng bài</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/management">
+                                <span class="icon"><img src="../images/icons/manage_post.png" alt=""></i></span>
+                                <span class="title">Quản lý bài viết</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/student">
+                                <span class="icon"><img src="../images/icons/sv_manage.png" alt=""></span>
+                                <span class="title">Quản lý sinh viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin">
+                                <span class="icon"><img src="../images/icons/administrators.png" alt=""></i></span>
+                                <span class="title">Quản trị viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact">
+                                <span class="icon"><img src="../images/icons/lienhe.png" alt=""></i></span>
+                                <span class="title">Thông tin liên hệ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="item">
+                    <form class="form" method="post" id="newPost">
+                        <div class="btn-title-fix">
+                            <button class="btn-title" disabled>
+                                ĐĂNG BÀI
+                            </button>
+                        </div>
+                        <div class="form-header">
+                            <input class="input-title" name="title" id="title" type="text">
+                            <div class="form-btn">
+                                <button class="btn-save">
+                                    Lưu Bài Viết
+                                </button>
+                                <button class="btn-post" type="submit">
+                                    Đăng Bài
+                                </button>
+                            </div>
+                        </div>
+                        <input class="input-title" placeholder="Description" id="description" type="text">
+                        <label class="title-banner">Banner Image</label>
+                        <div class="form-middle">
+                            <textarea id="mytextarea"></textarea>
+
+                            <div class="form-post">
+                                <label>
+                                    Ngày Đăng Ký
+                                </label>
+                                <input type="datetime" id="start_date">
+                                <label>
+                                    Ngày Kết Thúc
+                                </label>
+                                <input type="datetime" id="end_date">
+                                <label>
+                                    Số ngày CTXH khi hoàn thành
+                                </label>
+                                <input type="number" id="point" name="points" step="0.1">
+                                <label>
+                                    số thành viên tối đa tham gia
+                                </label>
+                                <input type="number" id="limitReg" name="points-number" step="1">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <footer class=" text-center text-lg-start">
+                <!-- Copyright -->
+                <div class="text-center text-white p-3">
+                    © 2022 Copyright:
+                    <a class="text-white">TiDi</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+        </div>
+    </div>
+    <script>
+        const logout = document.getElementById('logout');
+        //Logout
+        logout.addEventListener('click', () => {
+            sessionStorage.removeItem("_id");
+            return window.location.href = "/";
+        })
+
+
+        const Username = document.getElementById('_username');
+        Username.value = sessionStorage.getItem("fullname");
+
+
+        const title = document.getElementById('title');
+        const description = document.getElementById('description');
+        const start_date = document.getElementById('start_date');
+        const end_date = document.getElementById('end_date');
+        const point = document.getElementById('point');
+        const limitReg = document.getElementById('limitReg');
+        const image = document.getElementById('mytextarea');
+
+        const form = document.getElementById('newPost');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const _title = title.value
+            const _description = description.value;
+            const _start_date = start_date.value;
+            const _end_date = end_date.value;
+            const _point = point.value;
+            const _limitReg = limitReg.value;
+            const _image = image.value;
+            const _namepost = sessionStorage.getItem("fullname");
+            const _position = sessionStorage.getItem("position")
+            const _publisher_id = sessionStorage.getItem("_id")
+            const data = {
+                title: _title,
+                description: _description,
+                start_date: _start_date,
+                end_date: _end_date,
+                point: _point,
+                namepost: _namepost,
+                position: _position,
+                limitReg: _limitReg,
+                publisher_id: _publisher_id,
+                image: _image
+            }
+            const options = {
+                headers: {
+                    'key': 'projectquanlycongtacxahoi'
+                }
+            }
+            axios.post("https://quan-ly-cong-tac-xa-hoi.vercel.app/event/create-new-event", data, options)
+                .then((response) => {
+                    if (response.data.status === 1) {
+
+                        alert("Thêm bài viết thành công")
+                        return window.location.href = "/post";
+                    }
+                    else {
+                        alert(response.data.msg)
+                    }
+                }).catch(error => {
+                    console.log(error)
+                });
+        });
+
+
+
+    </script>
+</body>
+
+</html>

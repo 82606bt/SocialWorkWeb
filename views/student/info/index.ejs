@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin sinh viên</title>
+    <link rel="stylesheet" href="../../css/student-info.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../../js/home.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="top_navbar">
+            <div class="hamburger">
+                <div class="hamburger__inner">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="logo">
+                    TRANG MỤC
+                </div>
+                <div class="logo-title">
+                    TRƯỜNG ĐẠI HỌC CÔNG NGHỆ ĐỒNG NAI
+                </div>
+                <div class="right_menu">
+                    <ul>
+                        <li><i class="fa fa-user-circle-o"></i>
+                            <input id="_username" disabled>
+                            <div class="profile_dd">
+                                <button id="logout" class="dd_item">Thoát</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_container">
+            <div class="sidebar">
+                <div class="sidebar__inner">
+                    <ul>
+                        <li>
+                            <a href="/user" class="active">
+                                <span class="icon"><img src="../../images/icons/ID-Card 1.png" alt=""></i></span>
+                                <span class="title">Thông tin cá nhân</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/post">
+                                <span class="icon"><img src="../../images/icons/Post.png" alt=""></i></span>
+                                <span class="title">Đăng bài</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/management">
+                                <span class="icon"><img src="../../images/icons/manage_post.png" alt=""></i></span>
+                                <span class="title">Quản lý bài viết</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/student" class="active-4">
+                                <span class="icon"><img src="../../images/icons/sv_manage.png" alt=""></span>
+                                <span class="title">Quản lý sinh viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin">
+                                <span class="icon"><img src="../../images/icons/administrators.png" alt=""></i></span>
+                                <span class="title">Quản trị viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact">
+                                <span class="icon"><img src="../../images/icons/lienhe.png" alt=""></i></span>
+                                <span class="title">Thông tin liên lạc</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="item">
+                    <div class="btn-title-fix">
+                        <button class="btn-title" disabled>
+                            THÔNG TIN SINH VIÊN
+                        </button>
+                    </div>
+                    <form class="form-info">
+                        <p>
+                            <label>Họ và Tên</label>
+                            <label class="label-gender">Giới tính</label>
+                        </p>
+                        <p>
+                            <input value="Nguyễn Văn AAAAA">
+                            <input class="input-right" value="Nam">
+                        </p>
+                        <p>
+                            <label>MSSV</label>
+                            <label class="label-birthday">Ngày sinh</label>
+                        </p>
+                        <p>
+                            <input value="141802055" disabled>
+                            <input class="input-right" value="11/08/2000">
+                        </p>
+                        <p>
+                            <label>Lớp</label>
+                            <label class="label-address">Địa chỉ</label>
+                        </p>
+                        <p>
+                            <input value="ĐHCNTT14F">
+                            <input class="input-right" value="nqjwèhqưièhuqưehfuiqưè">
+                        </p>
+                        <p>
+                            <label>Ngành</label>
+                            <label class="label-phone">Số điện thoại</label>
+                        </p>
+                        <p>
+                            <input value="Công nghệ thông tin">
+                            <input class="input-right" value="090123456789">
+                        </p>
+                        <p>
+                            <label>Khóa</label>
+                            <label class="label-email">Email</label>
+                        </p>
+                        <p>
+                            <input value="2015 - 2019">
+                            <input class="input-right" type="email" id="email" pattern=".+@gmail\.com" size="30"
+                                required>
+                        </p>
+                        <p>
+                            <hr />
+                        </p>
+                        <p>
+                            <label>Tài khoản</label>
+                            <label class="label-point">Điểm Công Tác Xã Hội
+                                <a id="btn-open" class="btn-plus">.
+                                    <i class="fa fa-plus"></i>.
+                                </a>
+                            </label>
+                        </p>
+                        <p>
+                            <input value="141802055" disabled>
+                            <input type="number" class="input-right" value="20">
+                        </p>
+                        <p>
+                            <label>Password (MD5)</label>
+                            <label class="label-passwordNew">New Password</label>
+                        </p>
+                        <p>
+                            <input type="text" value="f14fd6f739da8cdf78063a9e4120d9ca" disabled>
+                            <input type="password" class="passwordNew" placeholder="Nhập mật khẩu mới">
+                        </p>
+                        <p class="text-center-btn">
+                            <button class="btn-submit">LƯU</button>
+                        </p>
+                    </form>
+                </div>
+
+                <div class="item-2">
+                    <div class="btn-title-fix-2">
+                        <button class="btn-title" disabled>
+                            LỊCH SỬ THAM GIA
+                        </button>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>
+                                STT
+                            </th>
+                            <th>
+                                Thời gian
+                            </th>
+                            <th>
+                                Tên sự kiện
+                            </th>
+                            <th>
+                                Tình trạng
+                            </th>
+                            <th>
+                                Điểm
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td> 28/06/2022 13:01</td>
+                            <td>Công Tác Xã Hội 1</td>
+                            <td>Hoàn thành</td>
+                            <td>5 Điểm</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td> 28/06/2022 19:01</td>
+                            <td>Công Tác Xã Hội 2</td>
+                            <td>Thất bại</td>
+                            <td>0 Điểm</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td> 28/06/2022 13:01</td>
+                            <td>Công Tác Xã Hội 3</td>
+                            <td>Hoàn thành</td>
+                            <td>5 Điểm</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td> 28/06/2022 19:01</td>
+                            <td>Công Tác Xã Hội 4</td>
+                            <td>Hoàn thành</td>
+                            <td>5 Điểm</td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div class="item-3">
+                    <div class="btn-title-fix-2">
+                        <button class="btn-title" disabled>
+                            LỊCH SỬ CHỈNH SỬA
+                        </button>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>
+                                STT
+                            </th>
+                            <th>
+                                Thời gian
+                            </th>
+                            <th>
+                                Loại
+                            </th>
+                            <th>
+                                Chi tiết
+                            </th>
+                            <th>
+                                Lý do
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td> 28/06/2022 13:01</td>
+                            <td>Điểm</td>
+                            <td>Thay đổi từ 25 điểm CTXH lên 35 điểm</td>
+                            <td>Hoàn thành CTXH 11/07/2022</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td> 28/06/2022 19:01</td>
+                            <td>Nội Dung</td>
+                            <td>Thay đổi MK 123456789 to 321654987</td>
+                            <td>Cập nhật</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td> 28/06/2022 13:01</td>
+                            <td>Điểm</td>
+                            <td>Thay đổi từ 15 điểm CTXH lên 25 điểm</td>
+                            <td>Hoàn thành CTXH 10/07/2022</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td> 28/06/2022 19:01</td>
+                            <td>Nội Dung</td>
+                            <td>Thay đổi MK 123456713 to 123456789</td>
+                            <td>Cập nhật</td>
+                        </tr>
+                    </table>
+
+                </div>
+                <!-- Modal -->
+                <div id="modal-container">
+                    <div id="modal">
+                        <div class="modal-header">
+                            <button class="btn-title" disabled>
+                                CHỈNH SỬA ĐIỂM CTXH
+                                <i id="btn-close" class="fa fa-close"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-fixed">
+                                <p>
+                                    <label>
+                                        Họ và Tên
+                                    </label>
+                                    <label class="fixed-mssv">
+                                        MSSSV
+                                    </label>
+                                </p>
+                                <p>
+                                    <input type="text" value="Nguyễn Văn AAAAA">
+                                    <input class="fixed-input" value="141802055">
+                                </p>
+                                <p>
+                                    <label>
+                                        Lớp
+                                    </label>
+                                    <label class="fixed-point">
+                                        Điểm Công Tác Xã Hội hiện tại
+                                    </label>
+                                </p>
+                                <p>
+                                    <input type="text" value="ĐHCNTT14F">
+                                    <input type="text" class="fixed-input" value="20">
+                                </p>
+                                <p>
+                                    <label>Điểm Công Tác Xã Hội cộng vào</label>
+                                </p>
+                                <p>
+                                    <input type="number" id="points" name="points" step="0.5" placeholder="Nhập số thập phân có thể kèm âm (-0.5 hoặc 0.5)
+                                    ">
+                                </p>
+                                <p>
+                                    <label>Lý do</label>
+                                </p>
+                                <p>
+                                    <input type="text" id="reason" placeholder="Nhập lý do thay đổi">
+                                    <button class="btn-save">LƯU</button>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Modal End -->
+            </div>
+            <footer class=" text-center text-lg-start">
+                <!-- Copyright -->
+                <div class="text-center text-white p-3">
+                    © 2022 Copyright:
+                    <a class="text-white">TiDi</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+        </div>
+    </div>
+    <script>
+
+        const logout = document.getElementById('logout');
+        //Logout
+        logout.addEventListener('click', () => {
+            sessionStorage.removeItem("_id");
+            return window.location.href = "/";
+        })
+
+
+        const Username = document.getElementById('_username');
+        Username.value = sessionStorage.getItem("fullname");
+
+        const btn_open = document.getElementById('btn-open');
+        const btn_close = document.getElementById('btn-close');
+        const modal_container = document.getElementById('modal-container');
+        btn_open.addEventListener('click', () => {
+            //Add class .show
+            modal_container.classList.add('show')
+        })
+        btn_close.addEventListener('click', () => {
+            //Remove class .show
+            modal_container.classList.remove('show')
+        })
+    </script>
+</body>
+
+</html>

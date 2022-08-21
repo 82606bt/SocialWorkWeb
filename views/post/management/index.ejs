@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý bài viết</title>
+    <link rel="stylesheet" href="../../css/post_management.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../../js/home.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="top_navbar">
+            <div class="hamburger">
+                <div class="hamburger__inner">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="logo">
+                    TRANG MỤC
+                </div>
+                <div class="logo-title">
+                    TRƯỜNG ĐẠI HỌC CÔNG NGHỆ ĐỒNG NAI
+                </div>
+                <div class="right_menu">
+                    <ul>
+                        <li><i class="fa fa-user-circle-o"></i>
+                            <input id="_username" disabled>
+                            <div class="profile_dd">
+                                <button id="logout" class="dd_item">Thoát</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_container">
+            <div class="sidebar">
+                <div class="sidebar__inner">
+                    <ul>
+                        <li>
+                            <a href="/user/" class="active">
+                                <span class="icon"><img src="../../images/icons/ID-Card 1.png" alt=""></i></span>
+                                <span class="title">Thông tin cá nhân</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/post" class="active-2">
+                                <span class="icon"><img src="../../images/icons/Post.png" alt=""></i></span>
+                                <span class="title">Đăng bài</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/management" class="active-3">
+                                <span class="icon"><img src="../../images/icons/manage_post.png" alt=""></i></span>
+                                <span class="title">Quản lý bài viết</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/student">
+                                <span class="icon"><img src="../../images/icons/sv_manage.png" alt=""></span>
+                                <span class="title">Quản lý sinh viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin">
+                                <span class="icon"><img src="../../images/icons/administrators.png" alt=""></i></span>
+                                <span class="title">Quản trị viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact">
+                                <span class="icon"><img src="../images/icons/lienhe.png" alt=""></i></span>
+                                <span class="title">Thông tin liên hệ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="item">
+                    <div class="btn-title-fix">
+                        <button class="btn-title" disabled>
+                            QUẢN LÝ BÀI VIẾT
+                        </button>
+                    </div>
+                    <table class="table-post" id="tableEvents">
+                        <tr class="table-header">
+                            <th>
+                                Tiêu Đề
+                            </th>
+                            <th>
+                                Trạng Thái
+                            </th>
+                            <th>
+                                Tác Giả
+                            </th>
+                            <th>
+                                Ngày Đăng
+                            </th>
+                        </tr>
+                    </table>
+
+                </div>
+                </form>
+            </div>
+            <footer class=" text-center text-lg-start">
+                <!-- Copyright -->
+                <div class="text-center text-white p-3">
+                    © 2022 Copyright:
+                    <a class="text-white">TiDi</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+        </div>
+    </div>
+    <script>
+        const logout = document.getElementById('logout');
+        //Logout
+        logout.addEventListener('click', () => {
+            sessionStorage.removeItem("_id");
+            return window.location.href = "/";
+        })
+
+
+        const Username = document.getElementById('_username');
+        Username.value = sessionStorage.getItem("fullname");
+
+
+        const tableAccounts = document.getElementById('tableEvents');
+        const renderListEvent = (data) => {
+            data.map((event) => {
+                return tableAccounts.innerHTML += `
+                <tr class="table-category">
+                    <td>${event.title}
+                        <button class="btn-fix">
+                            Chỉnh sửa
+                        </button>
+                        <button class="btn-del">
+                            Xóa
+                        </button>
+                    </td>
+                    <td>Public </td>
+                    <td>${event.namepost}</td>
+                    <td>${event.createdAt}</td>
+                </tr>
+                `
+            })
+        }
+
+        //get list event from api
+        const options = {
+            headers: {
+                'key': 'projectquanlycongtacxahoi'
+            }
+        }
+        axios.get("https://quan-ly-cong-tac-xa-hoi.vercel.app/event/listAll", options)
+            .then((response) => {
+                if (response.data.status === 1) {
+                    return renderListEvent(response.data.data);
+                }
+                else {
+                    alert(response.data.msg)
+                }
+            }).catch(error => {
+                console.log(error)
+            });
+    </script>
+</body>
+
+</html>

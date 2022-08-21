@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý trị viên</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../js/home.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="top_navbar">
+            <div class="hamburger">
+                <div class="hamburger__inner">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="logo">
+                    TRANG MỤC
+                </div>
+                <div class="logo-title">
+                    TRƯỜNG ĐẠI HỌC CÔNG NGHỆ ĐỒNG NAI
+                </div>
+                <div class="right_menu">
+                    <ul>
+                        <li><i class="fa fa-user-circle-o"></i>
+                            <input id="_username" disabled>
+                            <div class="profile_dd">
+                                <button id="logout" class="dd_item">Thoát</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_container">
+            <div class="sidebar">
+                <div class="sidebar__inner">
+                    <ul>
+                        <li>
+                            <a href="/user" class="active">
+                                <span class="icon"><img src="../images/icons/ID-Card 1.png" alt=""></i></span>
+                                <span class="title">Thông tin cá nhân</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/post">
+                                <span class="icon"><img src="../images/icons/Post.png" alt=""></i></span>
+                                <span class="title">Đăng bài</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/management">
+                                <span class="icon"><img src="../images/icons/manage_post.png" alt=""></i></span>
+                                <span class="title">Quản lý bài viết</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/student">
+                                <span class="icon"><img src="../images/icons/sv_manage.png" alt=""></span>
+                                <span class="title">Quản lý sinh viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin" class="active-5">
+                                <span class="icon"><img src="../images/icons/administrators.png" alt=""></i></span>
+                                <span class="title">Quản trị viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact">
+                                <span class="icon"><img src="../images/icons/lienhe.png" alt=""></i></span>
+                                <span class="title">Thông tin liên hệ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="item">
+                    <div class="btn-title-fix">
+                        <button class="btn-title" disabled>
+                            QUẢN TRỊ VIÊN
+                        </button>
+                    </div>
+                    <div class="form">
+                        <div class="form-search">
+                            <input type="text" id="input-search" class="input-search"
+                                placeholder="&#xF002;Tìm kiếm (Nhập MSSV hoặc Họ Tên)"
+                                style="font-family:Arial, FontAwesome">
+                            <button class="btn-search">
+                                <i class="fa fa-search"></i>Tìm kiếm
+                            </button>
+                        </div>
+                        <button id="btn-open" class="btn-add"><i class="fa fa-plus"></i>Thêm QTV</i>
+                        </button>
+                    </div>
+                    <div id="modal-container">
+                        <div id="modal">
+                            <div class="modal-header">
+                                <button class="btn-title-1" disabled>
+                                    Nguyễn Thị Liệu (Tài khoản hoặc mã số hiện ở đây) - Chức vụ: Giảng viên
+                                    <i class="	fas fa-trash-alt"></i>
+                                    <i class="fas fa-edit"></i>
+
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="group">
+                                    <div class="group_child">
+                                        <button class="btn-role" disabled>BÀI VIẾT</button>
+                                        <label class="container_group">Chỉnh sửa
+                                            <input type="checkbox" checked="checked">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_group">Xoá
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_group">Xem toàn bộ bài viết
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="group_child_1">
+                                        <button class="btn-role" disabled>SINH VIÊN</button>
+                                        <label class="container_group">Xem thông tin
+                                            <input type="checkbox" checked="checked">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_group">Khóa
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_group">Xóa
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_group">Sửa thông tin
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_group">Sửa diểm CTXH
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_group">Thêm sinh viên
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="group_child_2">
+                                    <button class="btn-role" disabled>QUẢN TRỊ VIÊN</button>
+                                    <label class="container_group">Xem thông tin
+                                        <input type="checkbox" checked="checked">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container_group">Sửa thông tin
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container_group">Quyền chấm công
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div id="modal-container-qtv">
+                        <div id="modal-qtv">
+                            <div class="modal-header">
+                                <button class="btn-title" disabled>
+                                    THÊM QUẢN TRỊ VIÊN
+                                    <i id="btn-close" class="fa fa-close"></i>
+                                </button>
+
+                            </div>
+                            <div class="modal-body-qtv">
+                                <form class="form-register-admin" id="createAdmin" method="post">
+                                    <p>
+                                        <label>Tài Khoản <i style="color:red">*</i></label>
+                                        <label class="label-password">Mật Khẩu <i style="color:red">*</i></label>
+                                    </p>
+                                    <p>
+                                        <input type="text" id="username" class="input-account" placeholder="Bắt buộc"
+                                            required>
+
+                                        <input type="password" id="password" class="input-password"
+                                            placeholder="Bắt buộc" required>
+                                    </p>
+                                    <p>
+                                        <hr />
+                                    </p>
+                                    <p>
+                                        <label class="label-left">Họ và Tên<i style="color:red">*</i></label>
+                                        <label class="label-gender">Giới Tính<i style="color:red">*</i></label>
+                                    </p>
+                                    <p>
+                                        <input type="text" id="_fullname" id="input-name" required>
+
+                                        <input type="radio" id="gender" value="true"
+                                            style="margin-left: -3em;height: 12px;"><a style="margin-left:-8em;">Nam</a>
+                                        <input type="radio" id="gender" value="false"
+                                            style="margin-left: 11.66em;height: 12px;"><a
+                                            style="margin-left:-8em;">Nữ</a>
+
+                                    </p>
+                                    <p>
+                                        <label class="label-left">Số điện thoại<i style="color:red">*</i></label>
+                                        <label class="label-date">Ngày sinh<i style="color:red">*</i></label>
+                                    </p>
+                                    <p>
+                                        <input type="tel" id="phone" name="phone" class="form-control"
+                                            pattern="[0-9]{10}" required>
+
+                                        <input type="date" id="birthday" class="input-right" required>
+                                    </p>
+                                    <p>
+                                        <label class="label-left">Email<i style="color:red">*</i></label>
+                                        <label class="label-address">Địa chỉ<i style="color:red">*</i></label>
+                                    </p>
+                                    <p>
+                                        <input type="email" id="mail" pattern=".+@gmail\.com" size="30" required>
+
+                                        <input type="text" id="address" class="input-right">
+                                    </p>
+                                    <p>
+                                        <label class="label-left">Chức vụ<i style="color:red">*</i></label>
+                                    </p>
+                                    <p>
+                                        <input type="text" id="position" required>
+                                    </p>
+                                    <p>
+                                        <button id="btn-submit" class="btn-submit">THÊM</button>
+                                    </p>
+
+                                </form type="submit">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal End -->
+                    <footer class=" text-center text-lg-start">
+                        <!-- Copyright -->
+                        <div class="text-center text-white p-3">
+                            © 2022 Copyright:
+                            <a class="text-white">TiDi</a>
+                        </div>
+                        <!-- Copyright -->
+                    </footer>
+                </div>
+            </div>
+
+        </div>
+        <script>
+            const form = document.getElementById('createAdmin');
+            const username = document.getElementById('username');
+            const Password = document.getElementById('password');
+            const Fullname = document.getElementById('_fullname');
+            const Gender = document.getElementById('gender');
+            const Phone = document.getElementById('phone');
+            const Birthday = document.getElementById('birthday');
+            const Email = document.getElementById('mail');
+            const Address = document.getElementById('address');
+            const Position = document.getElementById('position');
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const _id = sessionStorage.getItem('_id');
+                const _username = username.value;
+                const _password = Password.value;
+                const _gender = Gender.value;
+                const _fullname = Fullname.value;
+                const _phone = Phone.value;
+                const _birthday = Birthday.value;
+                const _mail = Email.value;
+                const _address = Address.value;
+                const _position = Position.value;
+                const data = {
+                    _id: _id,
+                    username: _username,
+                    password: _password,
+                    fullname: _fullname,
+                    gender: _gender,
+                    birthday: _birthday,
+                    mail: _mail,
+                    phone: _phone,
+                    address: _address,
+                    position: _position,
+                }
+                const options = {
+                    headers: {
+                        'key': 'projectquanlycongtacxahoi'
+                    }
+                }
+                axios.post("https://quan-ly-cong-tac-xa-hoi.vercel.app/account/create-new-admin", data, options)
+                    .then((response) => {
+                        if (response.data.status === 1) {
+                            alert("Tạo tài khoản thành công")
+                            return window.location.href = "/admin";
+                        }
+                        else {
+                            alert(response.data.msg)
+                        }
+                    }).catch(error => {
+                        console.log(error)
+                    });
+            });
+        </script>
+
+        <script>
+
+            const logout = document.getElementById('logout');
+            //Logout
+            logout.addEventListener('click', () => {
+                sessionStorage.removeItem("_id");
+                return window.location.href = "/";
+            });
+
+            const Username = document.getElementById('_username');
+            Username.value = sessionStorage.getItem("fullname");
+
+
+
+            const btn_open = document.getElementById('btn-open');
+            const btn_close = document.getElementById('btn-close');
+            const modal_container = document.getElementById('modal-container-qtv');
+            btn_open.addEventListener('click', () => {
+                //Add class .show
+                modal_container.classList.add('show')
+            });
+            btn_close.addEventListener('click', () => {
+                //Add class .show
+                modal_container.classList.remove('show')
+            });
+        </script>
+</body>
+
+</html>

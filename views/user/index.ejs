@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin cá nhân</title>
+    <link rel="stylesheet" href="../css/user.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/home.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="top_navbar">
+            <div class="hamburger">
+                <div class="hamburger__inner">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="logo">
+                    TRANG MỤC
+                </div>
+                <div class="logo-title">
+                    TRƯỜNG ĐẠI HỌC CÔNG NGHỆ ĐỒNG NAI
+                </div>
+                <div class="right_menu">
+                    <ul>
+                        <li><i class="fa fa-user-circle-o"></i>
+                            <input id="_username" disabled>
+                            <div class="profile_dd">
+                                <button id="logout" class="dd_item">Thoát</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_container">
+            <div class="sidebar">
+                <div class="sidebar__inner">
+                    <ul>
+                        <li>
+                            <a href="/user" class="active">
+                                <span class="icon"><img src="../images/icons/ID-Card 1.png" alt=""></i></span>
+                                <span class="title">Thông tin cá nhân</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/post">
+                                <span class="icon"><img src="../images/icons/Post.png" alt=""></i></span>
+                                <span class="title">Đăng bài</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/management">
+                                <span class="icon"><img src="../images/icons/manage_post.png" alt=""></i></span>
+                                <span class="title">Quản lý bài viết</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/student">
+                                <span class="icon"><img src="../images/icons/sv_manage.png" alt=""></span>
+                                <span class="title">Quản lý sinh viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin">
+                                <span class="icon"><img src="../images/icons/administrators.png" alt=""></i></span>
+                                <span class="title">Quản trị viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact">
+                                <span class="icon"><img src="../images/icons/lienhe.png" alt=""></i></span>
+                                <span class="title">Thông tin liên hệ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="item">
+                    <form class="form" id="saveForm" method="post">
+                        <div class="btn-title-fix">
+                            <button class="btn-title" disabled>
+                                THÔNG TIN CÁ NHÂN
+                            </button>
+                        </div>
+                        <div class="input_category mt-3 ml-3">
+                            <img src="../images/icons/name.png" alt="">
+                            <span>
+                                Họ và tên:
+                            </span>
+
+                            <input type="text" id="fullname" class="form-control" value="">
+                        </div>
+                        <div class="input_category mt-3 ml-3">
+                            <img src="../images/icons/callphone.png" alt="">
+                            <span>
+                                SĐT:
+                            </span>
+                            <input type="tel" id="phone" name="phone" class="form-control" pattern="[0-9]{10}" required
+                                value="">
+                        </div>
+                        <div class="input_category mt-3 ml-3">
+                            <img src="../images/icons/birthday.png" alt="">
+                            <span>
+                                Ngày sinh:
+                            </span>
+                            <input type="date" id="birthday" name="birthday" class="form-control" value="">
+                        </div>
+                        <div class="input_category mt-3 ml-3">
+                            <img src="../images/icons/diachi.png" alt="">
+                            <span>
+                                Địa chỉ:
+                            </span>
+
+                            <input type="text" id="address" class="form-control" value="">
+                        </div>
+
+                        <div class="input_category mt-3 ml-3">
+                            <img src="../images/icons/mail.png" alt="">
+                            <span>
+                                Email:
+                            </span>
+                            <input type="text" id="mail" class="form-control" value="">
+                        </div>
+                        <div class="input_category mt-3 ml-3">
+                            <img src="../images/icons/contact.png" alt="">
+                            <span>
+                                Chức vụ:
+                            </span>
+                            <input type="text" id="position" class="form-control" value="">
+                        </div>
+                        <div class="btn">
+                            <button class="btn-submit" type="submit">
+                                LƯU
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <footer class=" text-center text-lg-start">
+                    <!-- Copyright -->
+                    <div class="text-center text-white p-3">
+                        © 2022 Copyright:
+                        <a class="text-white">TiDi</a>
+                    </div>
+                    <!-- Copyright -->
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+        const logout = document.getElementById('logout');
+        //Logout
+        logout.addEventListener('click', () => {
+            sessionStorage.removeItem("_id");
+            return window.location.href = "/";
+        })
+
+
+        const Username = document.getElementById('_username');
+        Username.value = sessionStorage.getItem("fullname");
+
+        const form = document.getElementById('saveForm');
+        //return value
+        const Fullname = document.getElementById('fullname');
+        Fullname.value = sessionStorage.getItem("fullname");
+
+        const Phone = document.getElementById('phone');
+        Phone.value = sessionStorage.getItem("phone");
+
+        //document.getElementById("birthday").value = sessionStorage.getItem("birthday");
+        const Birthday = document.getElementById('birthday');
+        Birthday.value = sessionStorage.getItem("birthday");
+
+        const Address = document.getElementById('address');
+        Address.value = sessionStorage.getItem("address");
+
+        const Mail = document.getElementById('mail');
+        Mail.value = sessionStorage.getItem("mail");
+
+        const Position = document.getElementById('position');
+        Position.value = sessionStorage.getItem("position");
+        //Function click
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const _id = sessionStorage.getItem('_id');
+            const _fullname = Fullname.value;
+            const _phone = Phone.value;
+            const _address = Address.value;
+            const _birthday = Birthday.value;
+            const _mail = Mail.value;
+            const _positon = Position.value;
+            const data = {
+                _id: _id,
+                fullname: _fullname,
+                phone: _phone,
+                address: _address,
+                birthday: _birthday,
+                mail: _mail,
+                positon: _positon
+            }
+            const options = {
+                headers: {
+                    'key': 'projectquanlycongtacxahoi'
+                }
+            }
+            axios.post("https://quan-ly-cong-tac-xa-hoi.vercel.app/account/update-account", data, options)
+                .then((response) => {
+                    if (response.data.status === 1) {
+                        //Name account
+                        const newUsername = response.data.data.fullname;
+                        Username.value = newUsername;
+                        sessionStorage.setItem("fullname", newUsername);
+
+                        //Full name
+                        const newFullname = response.data.data.fullname;
+                        Fullname.value = newFullname;
+                        sessionStorage.setItem("fullname", newFullname);
+
+                        //Phone
+                        const newPhone = response.data.data.phone;
+                        Phone.value = newPhone;
+                        sessionStorage.setItem("phone", newPhone);
+
+                        //Address
+                        const newAddress = response.data.data.address;
+                        Address.value = newAddress;
+                        sessionStorage.setItem("address", newAddress);
+
+                        //Birthday
+                        const newBirthday = response.data.data.birthday;
+                        Birthday.value = newBirthday;
+                        sessionStorage.setItem("birthday", newBirthday);
+
+                        //Mail
+                        const newMail = response.data.data.mail;
+                        Mail.value = newMail;
+                        sessionStorage.setItem("mail", newMail);
+
+                        //Position
+                        const newPosition = response.data.data.positon;
+                        Position.value = newPosition;
+                        sessionStorage.setItem("position", newPosition);
+
+                        alert("Cập nhật thành công")
+                        return window.location.href = "/user";
+                    }
+                    else {
+                        alert(response.data.msg)
+                    }
+                }).catch(error => {
+                    console.log(error)
+                });
+        });
+    </script>
+</body>
+
+</html>

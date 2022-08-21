@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+body {
+    background: url(../images/background.jpg)no-repeat center top;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+
+}
+
+
+.form {
+    max-width: 480px;
+    margin: auto;
+}
+
+h1 {
+    font-family: 'Roboto';
+    font-style: normal;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.mb-3 {
+    color: #C3151C;
+}
+
+.h3,
+h3 {
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 59px;
+}
+
+h4 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 59px;
+    color: #005B9C;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+form .form-control {
+    min-height: 1em;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 60%;
+    margin: auto;
+}
+
+.form {
+    max-width: 500px;
+    height: 295px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+}
+
+.btn-login {
+    width: 200px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background-image: linear-gradient(#02447d, #15a2d1);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 41px;
+    color: #FFFFFF;
+    border-radius: 10px;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.forgot a {
+    margin-right: -60%;
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-style: italic;
+    color: #ACACAC;
+}
+
+footer .text-white {
+    text-decoration: none;
+}

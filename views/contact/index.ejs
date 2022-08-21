@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin liên hệ</title>
+    <link rel="stylesheet" href="../css/contact.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../js/home.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="top_navbar">
+            <div class="hamburger">
+                <div class="hamburger__inner">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="logo">
+                    TRANG MỤC
+                </div>
+                <div class="logo-title">
+                    TRƯỜNG ĐẠI HỌC CÔNG NGHỆ ĐỒNG NAI
+                </div>
+                <div class="right_menu">
+                    <ul>
+                        <li><i class="fa fa-user-circle-o"></i>
+                            <input id="_username" disabled>
+                            <div class="profile_dd">
+                                <button id="logout" class="dd_item">Thoát</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_container">
+            <div class="sidebar">
+                <div class="sidebar__inner">
+                    <ul>
+                        <li>
+                            <a href="/user" class="active">
+                                <span class="icon"><img src="../images/icons/ID-Card 1.png" alt=""></i></span>
+                                <span class="title">Thông tin cá nhân</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/post">
+                                <span class="icon"><img src="../images/icons/Post.png" alt=""></i></span>
+                                <span class="title">Đăng bài</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/management">
+                                <span class="icon"><img src="../images/icons/manage_post.png" alt=""></i></span>
+                                <span class="title">Quản lý bài viết</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/student">
+                                <span class="icon"><img src="../images/icons/sv_manage.png" alt=""></span>
+                                <span class="title">Quản lý sinh viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin">
+                                <span class="icon"><img src="../images/icons/administrators.png" alt=""></i></span>
+                                <span class="title">Quản trị viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact" class="active-6">
+                                <span class="icon"><img src="../images/icons/lienhe.png" alt=""></i></span>
+                                <span class="title">Thông tin liên hệ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="item">
+                    <form id="saveContact" class="form" method="post" action="/contact">
+                        <div class="btn-title-fix">
+                            <button class="btn-title" disabled>
+                                THÔNG TIN LIÊN HỆ
+                            </button>
+                        </div>
+                        <div class="input_category mt-3 ml-3">
+                            <img src="../images/icons/name.png" alt="" value="">
+                            <span>
+                                Trường:
+                            </span>
+                            <input type="text" id="sclname" class="form-control" value="">
+                        </div>
+                        <div class="input_category mt-3 ml-3">
+                            <img src="../images/icons/diachi.png" alt="">
+                            <span>
+                                Địa chỉ:
+                            </span>
+                            <input type="text" id="scladdress" class="form-control" value="">
+                        </div>
+                        <div class="input_category mt-3 ml-3">
+                            <img src="../images/icons/clock.png" alt="">
+                            <span>
+                                Giờ làm việc:
+                            </span>
+                            <input type="text" id="sclworktime" name="work" class="form-control" value="">
+                            <input type="text" id="sclworktimesunday" name="work_" class="form-control" value="">
+                        </div>
+                        <div class="input_category mt-3 ml-3">
+                            <img src="../images/icons/callphone.png" alt="">
+                            <span>
+                                Hotline:
+                            </span>
+                            <input type="text" id="sclhotline" class="form-control " value="">
+                        </div>
+
+                        <div class=" input_category mt-3 ml-3">
+                            <img src="../images/icons/mail.png" alt="">
+                            <span>
+                                Email:
+                            </span>
+                            <input type="text" id="sclmail" class="form-control" value="">
+                        </div>
+                        <div class="input_category mt-3 ml-3">
+                            <img class="icon-1" src="../images/icons/website.png" alt="">
+                            <span>
+                                Website:
+                            </span>
+                            <input type="text" id="sclweb" class="form-control" value="">
+                        </div>
+                        <div class="btn">
+                            <button class="btn-submit" type="submit">
+                                LƯU
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <footer class=" text-center text-lg-start">
+                    <!-- Copyright -->
+                    <div class="text-center text-white p-3">
+                        © 2022 Copyright:
+                        <a class="text-white">TiDi</a>
+                    </div>
+                    <!-- Copyright -->
+                </footer>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const logout = document.getElementById('logout');
+        //Logout
+        logout.addEventListener('click', () => {
+            sessionStorage.removeItem("_id");
+
+            return window.location.href = "/";
+        })
+        const Username = document.getElementById('_username');
+        Username.value = sessionStorage.getItem("fullname");
+
+
+        //Get
+        const _sclname = document.getElementById('sclname');
+        _sclname.value = sessionStorage.getItem("sclname");
+
+        const _scladdress = document.getElementById('scladdress');
+        _scladdress.value = sessionStorage.getItem("scladdress");
+
+        const _sclworktime = document.getElementById('sclworktime');
+        _sclworktime.value = sessionStorage.getItem("sclworktime");
+
+        const _sclworktimesunday = document.getElementById('sclworktimesunday');
+        _sclworktimesunday.value = sessionStorage.getItem("sclworktimesunday");
+
+        const _sclhotline = document.getElementById('sclhotline');
+        _sclhotline.value = sessionStorage.getItem("sclhotline");
+
+        const _sclmail = document.getElementById('sclmail');
+        _sclmail.value = sessionStorage.getItem("sclmail");
+
+        const _sclweb = document.getElementById('sclweb');
+        _sclweb.value = sessionStorage.getItem("sclweb");
+
+        const options = {
+            headers: {
+                'key': 'projectquanlycongtacxahoi'
+            }
+        }
+        axios.get("https://quan-ly-cong-tac-xa-hoi.vercel.app/contact/info", options)
+            .then((response) => {
+                if (response.data.status === 1) {
+                    sessionStorage.setItem("sclname", response.data.data.sclname);
+                    sessionStorage.setItem("scladdress", response.data.data.scladdress);
+                    sessionStorage.setItem("sclworktime", response.data.data.sclworktime);
+                    sessionStorage.setItem("sclworktimesunday", response.data.data.sclworktimesunday);
+                    sessionStorage.setItem("sclhotline", response.data.data.sclhotline);
+                    sessionStorage.setItem("sclmail", response.data.data.sclmail);
+                    sessionStorage.setItem("sclweb", response.data.data.sclweb);
+                }
+                else {
+                    alert(response.data.msg)
+                }
+            }).catch(error => {
+                console.log(error)
+            });
+
+        //Post
+        const form = document.getElementById('saveContact');
+        const sclname = document.getElementById('sclname');
+        const scladdress = document.getElementById('scladdress');
+        const sclworktime = document.getElementById('sclworktime');
+        const sclworktimesunday = document.getElementById('sclworktimesunday');
+        const sclhotline = document.getElementById('sclhotline');
+        const sclmail = document.getElementById('sclmail');
+        const sclweb = document.getElementById('sclweb');
+
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const _id = sessionStorage.getItem('_id');
+            const Sclname = sclname.value;
+            const Scladdress = scladdress.value;
+            const Sclworktime = sclworktime.value;
+            const Sclworktimesunday = sclworktimesunday.value;
+            const Sclhotline = sclhotline.value;
+            const Sclmail = sclmail.value;
+            const Sclweb = sclweb.value;
+            const data = {
+                _id: _id,
+                sclname: Sclname,
+                scladdress: Scladdress,
+                sclworktime: Sclworktime,
+                sclworktimesunday: Sclworktimesunday,
+                sclhotline: Sclhotline,
+                sclmail: Sclmail,
+                sclweb: Sclweb,
+            }
+            const options = {
+                headers: {
+                    'key': 'projectquanlycongtacxahoi'
+                }
+            }
+            axios.post("https://quan-ly-cong-tac-xa-hoi.vercel.app/contact/set-info", data, options)
+                .then((response) => {
+                    if (response.data.status === 1) {
+                        console.log(response.data.data)
+                        //New Trường:
+                        const newSclname = response.data.data.sclname;
+                        _sclname.value = newSclname;
+                        sessionStorage.setItem("sclname", newSclname);
+
+                        //New Địa chỉ:
+                        const newScladdress = response.data.data.scladdress;
+                        _scladdress.value = newScladdress;
+                        sessionStorage.setItem("scladdress", newScladdress);
+
+                        //New Giờ làm việc chu nhat:
+                        const newSclworktimesunday = response.data.data.sclworktimesunday;
+                        _sclworktimesunday.value = newSclworktimesunday;
+                        sessionStorage.setItem("sclworktimesunday", newSclworktimesunday);
+
+                        //New Giờ làm việc
+                        const newSclworktime = response.data.data.sclworktime;
+                        _sclworktime.value = newSclworktime;
+                        sessionStorage.setItem("sclworktime", newSclworktime);
+
+                        //New Hotline:
+                        const newSclhotline = response.data.data.sclhotline;
+                        _sclhotline.value = newSclhotline;
+                        sessionStorage.setItem("sclhotline", newSclhotline);
+
+                        //New Email:
+                        const newSclmail = response.data.data.sclmail;
+                        _sclmail.value = newSclmail;
+                        sessionStorage.setItem("sclmail", newSclmail);
+
+
+                        //New Website:
+                        const newSclweb = response.data.data.sclweb;
+                        _sclweb.value = newSclweb;
+                        sessionStorage.setItem("sclweb", newSclweb);
+
+                        alert("Lưu liên hệ thành công")
+                        return window.location.reload();
+                    }
+                    else {
+                        alert(response.data.msg)
+                    }
+                }).catch(error => {
+                    console.log(error)
+                });
+        });
+    </script>
+</body>
+
+</html>

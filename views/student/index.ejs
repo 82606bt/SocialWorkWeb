@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý sinh viên</title>
+    <link rel="stylesheet" href="../css/student.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../js/home.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="top_navbar">
+            <div class="hamburger">
+                <div class="hamburger__inner">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="logo">
+                    TRANG MỤC
+                </div>
+                <div class="logo-title">
+                    TRƯỜNG ĐẠI HỌC CÔNG NGHỆ ĐỒNG NAI
+                </div>
+                <div class="right_menu">
+                    <ul>
+                        <li><i class="fa fa-user-circle-o"></i>
+                            <input id="_username" disabled>
+                            <div class="profile_dd">
+                                <button id="logout" class="dd_item">Thoát</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_container">
+            <div class="sidebar">
+                <div class="sidebar__inner">
+                    <ul>
+                        <li>
+                            <a href="/user" class="active">
+                                <span class="icon"><img src="../images/icons/ID-Card 1.png" alt=""></i></span>
+                                <span class="title">Thông tin cá nhân</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/post">
+                                <span class="icon"><img src="../images/icons/Post.png" alt=""></i></span>
+                                <span class="title">Đăng bài</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/management">
+                                <span class="icon"><img src="../images/icons/manage_post.png" alt=""></i></span>
+                                <span class="title">Quản lý bài viết</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/student" class="active-4">
+                                <span class="icon"><img src="../images/icons/sv_manage.png" alt=""></span>
+                                <span class="title">Quản lý sinh viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin">
+                                <span class="icon"><img src="../images/icons/administrators.png" alt=""></i></span>
+                                <span class="title">Quản trị viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact">
+                                <span class="icon"><img src="../images/icons/lienhe.png" alt=""></i></span>
+                                <span class="title">Thông tin liên hệ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="item">
+                    <div class="btn-title-fix">
+                        <button class="btn-title" disabled>
+                            QUẢN LÝ SINH VIÊN
+                        </button>
+                    </div>
+                    <div class="form">
+                        <div class="form-search">
+                            <input type="text" id="input-search" class="input-search"
+                                placeholder="&#xF002;Tìm kiếm (Nhập MSSV hoặc Họ Tên)"
+                                style="font-family:Arial, FontAwesome">
+                            <button class="btn-search">
+                                <i class="fa fa-search"></i>Tìm kiếm
+                            </button>
+                        </div>
+                        <button id="btn-open" class="btn-add"><i class="fa fa-plus"></i> Thêm
+                            sinh
+                            viên</i>
+
+                        </button>
+                        <!-- Modal -->
+                        <div id="modal-container">
+                            <div id="modal">
+                                <div class="modal-header">
+                                    <button class="btn-title" disabled>
+                                        THÊM SINH VIÊN
+                                        <i id="btn-close" class="fa fa-close"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-register-account" method="post" id="newStudent">
+                                        <p>
+                                            <label>MSSV <i style="color:red">*</i></label>
+                                            <label class="label-password">Mật Khẩu <i style="color:red">*</i></label>
+                                        </p>
+                                        <p>
+                                            <input type="number" class="input-account" id="mssv" required
+                                                placeholder="Bắt buộc">
+
+                                            <input type="password" class="input-password" id="password" required
+                                                placeholder="Bắt buộc">
+                                        </p>
+                                        <p>
+                                            <hr />
+                                        </p>
+                                        <p>
+                                            <label class="label-left">Họ và Tên</label>
+                                            <label class="label-gender">Giới Tính</label>
+                                        </p>
+                                        <p>
+                                            <input type="text" id="fullname" value="" required>
+
+                                            <input type="true" id="gender" value="" class="input-right" required>
+                                        </p>
+                                        <p>
+                                            <label>Ngày sinh</label>
+                                            <label class="label-class">Lớp</label>
+
+                                        </p>
+                                        <p>
+
+                                            <input type="date" id="birthday" value="" required>
+                                            <input type="text" id="myClass" value="" required class="input-right">
+                                        </p>
+                                        <p>
+
+                                            <label>Địa chỉ</label>
+                                            <label class="label-major">Ngành</label>
+                                        </p>
+                                        <p>
+                                            <input type="text" id="address" value="">
+                                            <input type="text" id="job" value="" required class="input-right">
+                                        </p>
+                                        <p>
+                                            <label>Số điện thoại</label>
+                                            <label class="label-course">Khóa</label>
+                                        </p>
+                                        <p>
+                                            <input type="text" pattern="[0-9]{10}" id="phone" value="">
+                                            <input type="text" id="course" value="" required class="input-right">
+                                        </p>
+                                        <p>
+                                            <button id="btn-submit" type="submit" class="btn-submit">THÊM</button>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Modal End -->
+                    </div>
+                    <table class="table-post" id="tableAccounts">
+                        <tr>
+                            <th>
+                                MSSV
+                            </th>
+                            <th>
+                                Lớp
+                            </th>
+                            <th>
+                                Họ và Tên
+                            </th>
+                            <th>
+                                Điểm CTXH
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                    </table>
+                    <div id="modal-container-table">
+                        <div id="modal-table">
+                            <div class="modal-body-table">
+                                <a>Bạn có chắc chắn muốn khoá
+                                    sinh viên này không?
+                                </a>
+                                <p>
+                                    <label>MSSV:</label>
+                                    <label style="color:#045087">141802055</label>
+                                </p>
+                                <p>
+                                    <label>Họ Và Tên:</label>
+                                    <label style="color:#045087">Nguyễn Văn AAAA</label>
+                                </p>
+                                <p class="popup-accpet">
+                                    <button class="btn-accept">
+                                        Xác nhận
+                                    </button>
+                                    <button class="btn-cancel" id="btn-close-2">
+                                        Hủy bỏ
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <footer class=" text-center text-lg-start">
+                    <!-- Copyright -->
+                    <div class="text-center text-white p-3">
+                        © 2022 Copyright:
+                        <a class="text-white">TiDi</a>
+                    </div>
+                    <!-- Copyright -->
+                </footer>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const tableAccounts = document.getElementById('tableAccounts');
+        const renderListAccount = (data) => {
+            data.map((account) => {
+                return tableAccounts.innerHTML += `
+                    <tr>
+                        <td>${account.mssv}</td>
+                        <td>${account.myClass}</td>
+                        <td>${account.fullname}</td>
+                        <td>${account.swScore}</td>
+                        <td>
+                            <button id="${account._id}" class="btn-view"><a href="/info">Xem</a></button>
+                            <button id="btn-close" class="btn-lock">Khóa</button>
+                        </td>
+                    </tr>
+                `
+            })
+        }
+
+
+
+        //get list account from api
+        const options = {
+            headers: {
+                'key': 'projectquanlycongtacxahoi'
+            }
+        }
+        axios.get("https://quan-ly-cong-tac-xa-hoi.vercel.app/account/list-account", options)
+            .then((response) => {
+                if (response.data.status === 1) {
+                    return renderListAccount(response.data.data.listAccount);
+                }
+                else {
+                    alert(response.data.msg)
+                }
+            }).catch(error => {
+                console.log(error)
+            });
+    </script>
+    <script>
+        //Logout
+        const logout = document.getElementById('logout');
+        //Logout
+        logout.addEventListener('click', () => {
+            sessionStorage.removeItem("_id");
+            return window.location.href = "/";
+        })
+
+        const _idLogin = sessionStorage.getItem("_id");
+
+
+        const Username = document.getElementById('_username');
+        Username.value = sessionStorage.getItem("fullname");
+
+        //Thêm sinh viên
+        const btn_open = document.getElementById('btn-open');
+        const btn_close = document.getElementById('btn-close');
+        const modal_container = document.getElementById('modal-container');
+        btn_open.addEventListener('click', () => {
+            //Add class .show
+            modal_container.classList.add('show')
+
+
+        })
+        btn_close.addEventListener('click', () => {
+            //Add class .show
+            modal_container.classList.remove('show')
+        })
+
+        //Popup accpet lockout
+        const open_btn = document.getElementById('btn-open-2');
+        const close_btn = document.getElementById('btn-close-2');
+        const modal_container_table = document.getElementById('modal-container-table');
+        open_btn.addEventListener('click', () => {
+            //Add class .show
+            modal_container_table.classList.add('show')
+        })
+        close_btn.addEventListener('click', () => {
+            //Add class .show
+            modal_container_table.classList.remove('show')
+        })
+    </script>
+    <script>
+        const _fullname = document.getElementById('fullname');
+        const _gender = document.getElementById('gender');
+        const _birthday = document.getElementById('birthday');
+        const _mssv = document.getElementById('mssv');
+        const _myClass = document.getElementById('myClass');
+        const _job = document.getElementById('job');
+        const _course = document.getElementById('course');
+        const _address = document.getElementById('address');
+        const _phone = document.getElementById('phone');
+
+        const form = document.getElementById('newStudent');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const fullname = _fullname.value
+            const gender = _gender.value;
+            const birthday = _birthday.value;
+            const mssv = _mssv.value;
+            const myClass = _myClass.value;
+            const job = _job.value;
+            const course = _course.value;
+            const address = _address.value;
+            const phone = _phone.value;
+            const data = {
+                fullname: fullname,
+                gender: gender,
+                birthday: birthday,
+                mssv: mssv,
+                myClass: myClass,
+                job: job,
+                course: course,
+                address: address,
+                phone: phone,
+            }
+            const options = {
+                headers: {
+                    'key': 'projectquanlycongtacxahoi'
+                }
+            }
+            axios.post("https://quan-ly-cong-tac-xa-hoi.vercel.app/account/create-new-student", data, options)
+                .then((response) => {
+                    if (response.data.status === 1) {
+
+                        alert("Thêm sinh viên thành công")
+                        return window.location.href = "/student";
+                    }
+                    else {
+                        alert(response.data.msg)
+                    }
+                }).catch(error => {
+                    console.log(error)
+                });
+        });
+    </script>
+</body>
+
+</html>
